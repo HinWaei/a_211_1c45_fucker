@@ -25,7 +25,7 @@ class data_set_generator:
                 for i in content:
                     article+=i
                 article=str.lower(article)
-                article=re.split('\..|\?|!',article)
+                article=re.split('\.+|\?|!',article)            #\.+ here is to split with omission symbol(...) but we don't know how many "." would be written.
                 for i in range(len(article)):
                     article[i]+='\n'
                 ds.writelines(article)
