@@ -15,29 +15,20 @@ def debug(msg:str):
 class data_set_generator:
 
     def read_from_file(self,file_path:str):
-        frag=""
 
         #try:
+        article=""
         with open(file_path,"r") as f:
             with open("./vector.txt","w+") as ds:
-            #Here I don't wanna use f.read() directly because loading the whole passage into memory would take great size of space
-                line=f.readline() 
-                while line:
-                    s=[]
-                    sentences=[]                       #s:Each line with separated sentences.         sentences:Made up of elements except the one with fragment sentence of s
-                    #"line" is reserved in order to get fragment sentence(i.e. a sentence that not ended by period symbol(.) )
-                    s=re.split("\.|!|\?|\.\.\.",line)                       #Split each line with '.' to get single sentences
-                    s[0]=frag+s[0]
-                    sentences+=s[:-1]               
-                    frag=s[-1] if s[-1]!='.' else ""             #If the line is not ended by period(.) then the last element would be the fragment sentence
-                    if(len(s))>1:
-                        for i in range(len(sentences)):
-                            if sentences[i][-1]!='\n':
-                                debug(sentences[i][-1])
-                                sentences[i]+='\n'
-                        ds.writelines(sentences)
-                    line=f.readline()
-
+                content=f.read()
+                content=content.rsplit('\n')
+                for i in content:
+                    article+=i
+                article=str.lower(article)
+                article=re.split('\..|\?|!',article)
+                for i in range(len(article)):
+                    article[i]+='\n'
+                ds.writelines(article)
                 ds.close()
             f.close()
 
