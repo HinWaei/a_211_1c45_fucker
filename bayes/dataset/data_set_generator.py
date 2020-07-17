@@ -26,14 +26,15 @@ class data_set_generator:
                     sentences=[]                       #s:Each line with separated sentences.         sentences:Made up of elements except the one with fragment sentence of s
                     #"line" is reserved in order to get fragment sentence(i.e. a sentence that not ended by period symbol(.) )
                     s=line.split(".")                       #Split each line with '.' to get single sentences
-                    s[0]+=frag
+                    s[0]=frag+s[0]
                     sentences+=s[:-1]               
                     frag=s[-1] if s[-1]!='.' else ""             #If the line is not ended by period(.) then the last element would be the fragment sentence
                     if(len(s))>1:
                         for i in range(len(sentences)):
                             sentences[i]+='\n'
                         ds.writelines(sentences)
-                        
+                    else:
+                        pass
                     line=f.readline()
 
                 ds.close()
