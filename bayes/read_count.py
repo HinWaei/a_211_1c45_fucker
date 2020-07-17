@@ -6,4 +6,4 @@ import os
 import sys
 
 class readFromFile:
-    
+    pass
