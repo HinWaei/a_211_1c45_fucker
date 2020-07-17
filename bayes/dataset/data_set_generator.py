@@ -5,15 +5,16 @@ import err_log
 class data_set_generator:
 
     def read_from_file(self,file_path:str):
-        
+        frag=""
+        sentence=[]
         try:
             with open(file_path,"r") as f:
             #Here I don't wanna use f.read() directly because loading the whole passage into memory would take great size of space
                 while True:
                     line=f.readline()
                     sentences=line.split(".")
-                    if line[-1]!=".":
-                        sentences[-1]
+                    sentences[0]=frag+sentence[0]
+                    frag=sentences[-1] if line[-1]!='.' else ""
 
         except EOFError as eof:
             return
