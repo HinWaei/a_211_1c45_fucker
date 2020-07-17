@@ -3,7 +3,8 @@
 #The output file could be used to provide data set for other purposes (e.g. The Bayes Learning here).
 import sys
 import os
-sys.path.append(str(os.getcwd()).replace('/bayes/dataset',''))
+import pathlib
+sys.path.append(str(pathlib.Path(__file__).parent.absolute()).replace('/bayes/dataset',''))
 from err_log import log
 class data_set_generator:
 
@@ -13,14 +14,17 @@ class data_set_generator:
         try:
             with open(file_path,"r") as f:
             #Here I don't wanna use f.read() directly because loading the whole passage into memory would take great size of space
-                while True:
-                    s=[]
-                    sentences=[]                       #s:Each line with separated sentences.         sentences:Made up of elements except the one with fragment sentence of s
-                    line=f.readline()                   #"line" is reserved in order to get fragment sentence(i.e. a sentence that not ended by period symbol(.) )
+                line=f.readline() 
+                while f:
+                    s=[""]
+                    sentences=[""]                       #s:Each line with separated sentences.         sentences:Made up of elements except the one with fragment sentence of s
+                    #"line" is reserved in order to get fragment sentence(i.e. a sentence that not ended by period symbol(.) )
                     s=line.split(".")                       #Split each line with '.' to get single sentences 
-                    sentences+=s[:-1]               
+                    sentences+=s[:-1]
+                    for i in range(len(sentences)):
+                        sentences[i]+='\n'               
                     frag=s[-1] if line[-1]!='.' else ""             #If the line is not ended by period(.) then the last element would be the fragment sentence
-
+                    line=f.readline()
 
         except EOFError as eof:                 #Quit if EOF was met
             f.close()
@@ -34,4 +38,4 @@ class data_set_generator:
             log(err_msg)'''
 
 if __name__ == "__main__":
-    data_set_generator.read_from_file(data_set_generator,os.path.join(os.getcwd(),"article.txt"))
+    data_set_generator.read_from_file(data_set_generator,)
