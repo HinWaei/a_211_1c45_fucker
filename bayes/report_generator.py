@@ -15,7 +15,7 @@ class read_from_data_set:
     
     #words is reserved for word count
     words=[]
-    vector=[]
+    vector={}
     vocabulary=[]
 
    #non-informative words
@@ -41,15 +41,18 @@ class read_from_data_set:
                         flag=True                                                   #Reset the flag                             
                     line=f.readline()
 
-                self.vocabulary=set(self.words)                #remove repeated elements
+                self.vocabulary=list(set(self.words))                #remove repeated elements and convert back to list
 
                 #vector:count of each word
-                self.vector=[0 for i in range(len(self.vocabulary))]
-                self.vocabulary=list(self.vocabulary)
+                #initialize the dict vector{}
+                for i in range(len(self.vocabulary)):
+                    self.vector[self.vocabulary[i]]=0
+                
+                #counting
                 for i in range(len(self.vocabulary)):
                     for j in range(len(self.words)):
                         if self.words[j]==self.vocabulary[i]:
-                            self.vector[i]+=1
+                            self.vector[self.vocabulary[i]]+=1
 
                 #Gather the results together
                 self.result['vocabulary']=list(self.vocabulary)
@@ -62,6 +65,11 @@ class read_from_data_set:
                 #vector:count of each word
                 self.result['vector']=self.vector
 
+                #generate the report.txt
+                with open("report.txt","w+") as report:
+                    report.write(json.dumps(self.result))
+                report.close()
+
                 #debug(self.result)
                 f.close()
             
@@ -72,3 +80,6 @@ class read_from_data_set:
 if __name__ == "__main__":
     #read_from_data_set.read_result1(read_from_data_set,os.getcwd()+"/result1.txt")
     read_from_data_set.report_gen(read_from_data_set,"/home/hinwai/projects/noob/bayes/result1.txt")
+    with open("report.txt") as r:
+        print(json.load(r))
+    r.close()
