@@ -16,25 +16,25 @@ class data_set_generator:
 
     def read_from_file(self,file_path:str):
 
-        #try:
-        article=""
-        with open(file_path,"r") as f:
-            with open("./vector.txt","w+") as ds:
-                content=f.read()
-                content=content.rsplit('\n')
-                for i in content:
-                    article+=i
-                article=str.lower(article)
-                article=re.split('\.+|\?|!',article)            #\.+ here is to split with omission symbol(...) but we don't know how many "." would be written.
-                for i in range(len(article)):
-                    article[i]+='\n'
-                ds.writelines(article)
-                ds.close()
-            f.close()
+        try:
+            article=""
+            with open(file_path,"r") as f:
+                with open("./result1.txt","w+") as ds:
+                    content=f.read()
+                    content=content.rsplit('\n')
+                    for i in content:
+                        article+=i
+                    article=str.lower(article)
+                    article=re.split('\.+|\?|!',article)            #\.+ here is to split with omission symbol(...) but we don't know how many "." would be written.
+                    for i in range(len(article)):
+                        article[i]+='\n'
+                    ds.writelines(article)
+                    ds.close()
+                f.close()
 
-            '''except FileNotFoundError as e:      #Show traceback information if file was not found
-                err_msg=e.with_traceback(e.__traceback__)
-                log(err_msg)'''
+        except FileNotFoundError as e:      #Show traceback information if file was not found
+            err_msg=e.with_traceback(e.__traceback__)
+            log(err_msg)
 
 if __name__ == "__main__":
     data_set_generator.read_from_file(data_set_generator,str(os.getcwd()+"/article.txt"))

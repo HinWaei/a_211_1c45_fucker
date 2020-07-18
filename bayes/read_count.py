@@ -5,5 +5,7 @@
 import os
 import sys
 
-class readFromFile:
-    pass
+class read_from_data_set:
+    #Here result1 is the result brought by first-time process(i.e result1.txt, the excrement of data_set_generator.py :-p)
+    def read_result1(self,result1_path:str):
+        
