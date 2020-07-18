@@ -2,5 +2,6 @@ last week we published the guide, which covers installation, customization, and 
  it also touches on the basics of integration with frameworks like rails, react, laravel, and more
 celebrate with 30-40% off
 we hope the guide can get you started with your first bootstrap theme, but we figured a hefty discount might help too
- use the codes below at checkout before jun 25th
+ use the codes below at checkout before jun
+ 25th
 

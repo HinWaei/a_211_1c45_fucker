@@ -22,16 +22,17 @@ class read_from_data_set:
             with open(result1_path,"r") as f:
                 line=f.readline()
                 while line:
-                    line=line.replace("\n",'').rsplit(" ")                  #Fuck the '\n'(line-break symbol) and ' '(space) off for better work
+                    line=line.replace("\n",'').replace(',','').rsplit(" ")                  #Fuck the '\n'(line-break symbol) and ' '(space) off for better work
                     for i in range(len(line)):
                         for j in range(len(self.words_rm)):                
-                            line[i]=None if line[i]==self.words_rm[j] else line[i]        #replace the words that fit in with words_rm
+                            line[i]='' if line[i]==self.words_rm[j] or line[i]==' ' else line[i]        #replace the words that fit in with words_rm
                     self.vocabulary+=line
                     line=f.readline()
                 self.vector=set(self.vocabulary)
-                with open("vector.txt","w+") as vector:
+                debug(self.vector)
+                '''with open("vector.txt","w+") as vector:
                     pass
-                vector.close()
+                vector.close()'''
                 f.close()
 
         except FileNotFoundError as e:
