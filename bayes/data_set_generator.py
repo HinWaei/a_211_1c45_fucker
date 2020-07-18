@@ -5,7 +5,7 @@ import sys
 import os
 import pathlib
 import re
-sys.path.append(str(pathlib.Path(__file__).parent.absolute()).replace('/bayes/dataset',''))
+sys.path.append(str(pathlib.Path(__file__).parent.absolute()).replace('/bayes',''))
 from err_log import log
 
 def debug(msg:str):

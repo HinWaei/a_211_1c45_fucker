@@ -1,4 +1,6 @@
-write a python program to split a string with multiple delimiters
-note : a delimiter is a sequence of one or more characters used to specify the boundary between separate, independent regions in plain text or other data streams
- an example of a delimiter is the comma character, which acts as a field delimiter in a sequence of comma-separated values
+last week we published the guide, which covers installation, customization, and updating a bootstrap theme
+ it also touches on the basics of integration with frameworks like rails, react, laravel, and more
+celebrate with 30-40% off
+we hope the guide can get you started with your first bootstrap theme, but we figured a hefty discount might help too
+ use the codes below at checkout before jun 25th
 
