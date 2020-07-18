@@ -1,37 +1,44 @@
 #-- read_count.py BY:Hinux --#
 #This .py would get data from a specified file named data_set.txt in which sentences are divided by line-break symbols.
-#Then it would generate a vocabulary vector table after separating each word of sentences and 
-
+#Then it would generate a vocabulary vector table after shattering a whole article into sentences then fragmented words
 import os
+import json
 
 def debug(string:str):
     print(string)
     exit()
 
 class read_from_data_set:
-    #Here result1 is the result brought by first-time process(i.e result1.txt, the excrement of data_set_generator.py :-p)
     
+    #**ATTENTION: THIS IS THE RESULT. ITS TYPE IS DICT.
+    result={}
+    
+    #vocabulary is reserved for word count
     vocabulary=[]
     vector=[]
    #words that should be removed
     words_rm=['and','an','a','the','among', 'over', 'past', 'through', 'at', 'in', 'before', 'from', 'for', 'till', 'since', 'beside', 'to', 'behind', 'above', 'between', 'into', 'around', 'after', 'upon', 'during', 'with', 'by', 'on', 'of', 'until', 'below', 'without']
 
-    def vector_gen(self,result1_path:str):
+    #Read the result1.txt and then generate the vocabulary vector.
+    #Here result1 is the result brought by first-time process(i.e result1.txt, the excrement of data_set_generator.py :-p)
+    def vector_gen(self,result1_path:str):          
         try:
             with open(result1_path,"r") as f:
                 line=f.readline()
                 while line:
-                    line=line.replace("\n",'').replace(',','').rsplit(" ")                  #Fuck the '\n'(line-break symbol) and ' '(space) off for better work
+                    line=line.replace("\n",'').replace(',','').rsplit(" ")                  #Fuck the '\n'(line-break symbol) and ' '(space) off for better work(i.e. shattering the string into a list)
                     for i in range(len(line)):
                         for j in range(len(self.words_rm)):                
-                            line[i]='' if line[i]==self.words_rm[j] or line[i]==' ' else line[i]        #replace the words that fit in with words_rm
+                            if line[i]==self.words_rm[j] or line[i]==' ' or line[i]=='':        #replace the words that fit in with words_rm
+                                list(line).pop(i)
                     self.vocabulary+=line
                     line=f.readline()
-                self.vector=set(self.vocabulary)
-                debug(self.vector)
-                '''with open("vector.txt","w+") as vector:
-                    pass
-                vector.close()'''
+                self.vector=set(self.vocabulary)                #remove repeated elements
+                #result is 
+                self.result['vector']=list(self.vector)
+                self.result['vocabulary']=list(self.vocabulary)
+                self.result['class']=True
+
                 f.close()
 
         except FileNotFoundError as e:
