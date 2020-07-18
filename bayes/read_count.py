@@ -17,12 +17,13 @@ class read_from_data_set:
     vocabulary=[]
     vector=[]
    #words that should be removed
-    words_rm=['on','also','and','an','a','the','among', 'over', 'past', 'through', 'at', 'in', 'before', 'from', 'for', 'till', 'since', 'beside', 'to', 'behind', 'above', 'between', 'into', 'around', 'after', 'upon', 'during', 'with', 'by', 'on', 'of', 'until', 'below', 'without']
+    words_rm=['but','however','with','on','also','and','an','a','the','among', 'over', 'past', 'through', 'at', 'in', 'before', 'from', 'for', 'till', 'since', 'beside', 'to', 'behind', 'above', 'between', 'into', 'around', 'after', 'upon', 'during', 'with', 'by', 'on', 'of', 'until', 'below', 'without']
 
     #Read the result1.txt and then generate the vocabulary vector.
     #Here result1 is the result brought by first-time process(i.e result1.txt, the excrement of data_set_generator.py :-p)
     def vector_gen(self,result1_path:str):          
         try:
+            flag:bool=True
             with open(result1_path,"r") as f:
                 line=f.readline()
 
@@ -30,10 +31,13 @@ class read_from_data_set:
                     line=line.replace("\n",'').replace(',','').rsplit(" ")                  #Fuck the '\n'(line-break symbol) and ' '(space) off for better work(i.e. shattering the string into a list)
                     for i in range(len(line)):
                         for j in range(len(self.words_rm)):      
-                            if line[i]!=self.words_rm[j] and line[i]!=' ' and line[i]!='':       #replace the words that fit in with words_rm
-                                self.vocabulary.append(line[i])
+                            if line[i]==self.words_rm[j] or line[i]==' ' or line[i]=='':       #replace the words that fit in with words_rm
+                                flag=False
                                 break
-                            
+                        if flag:    
+                            self.vocabulary.append(line[i])
+                        flag=True
+                                
                     line=f.readline()
 
                 self.vector=set(self.vocabulary)                #remove repeated elements
