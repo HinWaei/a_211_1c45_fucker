@@ -16,7 +16,8 @@ class read_from_data_set:
     #vocabulary is reserved for word count
     vocabulary=[]
     vector=[]
-   #words that should be removed
+
+   #non-informative words
     words_rm=['but','however','with','on','also','and','an','a','the','among', 'over', 'past', 'through', 'at', 'in', 'before', 'from', 'for', 'till', 'since', 'beside', 'to', 'behind', 'above', 'between', 'into', 'around', 'after', 'upon', 'during', 'with', 'by', 'on', 'of', 'until', 'below', 'without']
 
     #Read the result1.txt and then generate the vocabulary vector.
@@ -31,17 +32,17 @@ class read_from_data_set:
                     line=line.replace("\n",'').replace(',','').rsplit(" ")                  #Fuck the '\n'(line-break symbol) and ' '(space) off for better work(i.e. shattering the string into a list)
                     for i in range(len(line)):
                         for j in range(len(self.words_rm)):      
-                            if line[i]==self.words_rm[j] or line[i]==' ' or line[i]=='':       #replace the words that fit in with words_rm
-                                flag=False
+                            if line[i]==self.words_rm[j] or line[i]==' ' or line[i]=='':       
+                                flag=False                                     #If the word equals to a word of non-informative-word array then tell the outside loop not to append
                                 break
-                        if flag:    
-                            self.vocabulary.append(line[i])
-                        flag=True
+                        if flag:                                                        #Inner loop:"Hey! Everything is ok! Just write the word into account!"
+                            self.vocabulary.append(line[i])         #Outside loop:"OK! Copy that~~ :-)"
+                        flag=True                                                   #Reset the flag
                                 
                     line=f.readline()
 
                 self.vector=set(self.vocabulary)                #remove repeated elements
-                
+                #
                 self.result['vector']=list(self.vector)
                 self.result['vocabulary']=list(self.vocabulary)
                 self.result['class']=True
@@ -54,4 +55,3 @@ class read_from_data_set:
 if __name__ == "__main__":
     #read_from_data_set.read_result1(read_from_data_set,os.getcwd()+"/result1.txt")
     read_from_data_set.vector_gen(read_from_data_set,"/home/hinwai/projects/noob/bayes/result1.txt")
-    print(read_from_data_set.result)
