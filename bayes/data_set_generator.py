@@ -36,5 +36,5 @@ class data_set_generator:
             err_msg=e.with_traceback(e.__traceback__)
             log(err_msg)
 
-if __name__ == "__main__":
-    data_set_generator.read_from_file(data_set_generator,str(os.getcwd()+"/article.txt"))
+'''if __name__ == "__main__":
+    data_set_generator.read_from_file(data_set_generator,str(os.getcwd()+"/article.txt"))'''

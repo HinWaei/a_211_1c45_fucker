@@ -77,9 +77,9 @@ class read_from_data_set:
         except FileNotFoundError as e:
             print(e.with_traceback(e.__traceback__))
 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
     #read_from_data_set.read_result1(read_from_data_set,os.getcwd()+"/result1.txt")
     read_from_data_set.report_gen(read_from_data_set,"/home/hinwai/projects/noob/bayes/result1.txt")
     with open("report.txt") as r:
         print(json.load(r))
-    r.close()
+    r.close()'''
