@@ -1,13 +1,47 @@
-#-- read_count.py BY:Hinux --#
+#-- bayes.py BY:Hinux --#
 #This .py would get data from a specified file named data_set.txt in which sentences are divided by line-break symbols.
 #Then it would generate a vocabulary vector table after shattering a whole article into sentences then fragmented words
+import sys
 import os
+import pathlib
+import re
+sys.path.append(str(pathlib.Path(__file__).parent.absolute()).replace('/bayes',''))
+from err_log import log
 import json
 
 def debug(string:str):
     print(string)
     exit()
 
+
+class data_set_generator:
+
+    def read_from_file(self,file_path:str):
+
+        try:
+            article=""
+            with open(file_path,"r") as f:
+                with open("./result1.txt","w+") as ds:
+                    content=f.read()
+                    content=content.rsplit('\n')
+                    for i in content:
+                        article+=i
+                    article=str.lower(article)
+                    article=re.split('\.+|\?|!',article)            #\.+ here is to split with omission symbol(...) but we don't know how many "." would be written.
+                    for i in range(len(article)):
+                        article[i]+='\n'
+                    ds.writelines(article)
+                    ds.close()
+                f.close()
+
+        except FileNotFoundError as e:      #Show traceback information if file was not found
+            err_msg=e.with_traceback(e.__traceback__)
+            log(err_msg)
+
+
+
+
+#This class realizes preconditioning 
 class read_from_data_set:
     
     #**ATTENTION: THIS IS THE RESULT. ITS TYPE IS DICT.
