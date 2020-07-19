@@ -51,7 +51,7 @@ vector={}
 vocabulary=[]
 
 #non-informative words
-words_rm=['but','however','with','on','also','and','an','a','the','among', 'over', 'past', 'through', 'at', 'in', 'before', 'from', 'for', 'till', 'since', 'beside', 'to', 'behind', 'above', 'between', 'into', 'around', 'after', 'upon', 'during', 'with', 'by', 'on', 'of', 'until', 'below', 'without']
+words_rm=['which','but','however','with','on','also','and','an','a','the','among', 'over', 'past', 'through', 'at', 'in', 'before', 'from', 'for', 'till', 'since', 'beside', 'to', 'behind', 'above', 'between', 'into', 'around', 'after', 'upon', 'during', 'with', 'by', 'on', 'of', 'until', 'below', 'without']
 
 #Read the result1.txt and then generate the vocabulary vector.
 #Here result1 is the result brought by first-time process(i.e result1.txt, the excrement of data_set_generator.py :-p)
