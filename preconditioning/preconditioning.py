@@ -99,7 +99,7 @@ def report_gen(result1_path:str,if_true:bool):
 
             #generate the report.txt
             with open("report.txt","a+") as report:
-                report.write(json.dumps(result))
+                report.write(json.dumps(result)+"\n")
             report.close()
 
             #debug(result)

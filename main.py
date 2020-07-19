@@ -4,11 +4,10 @@ import pathlib
 sys.path.append(str(pathlib.Path(__file__).parent.absolute())+'/bayes')
 from preconditioning.preconditioning import *
 
+#debug
 def debug(string:str):
     print(string)
     exit()
-
-
 
 if __name__ == "__main__":
     read_from_file(os.getcwd()+'/preconditioning/article.txt')

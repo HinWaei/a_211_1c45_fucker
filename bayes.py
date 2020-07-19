@@ -13,6 +13,9 @@ def train(report_path:str):
             line=f.readline()
             while line:
                 line=json.loads(line)
+                for i in range(len(line['vocabulary'])):
+                    line['vocabulary'][i]
+                line=f.readline()
 
 
     except Exception as e:
