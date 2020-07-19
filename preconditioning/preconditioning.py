@@ -98,7 +98,7 @@ def report_gen(result1_path:str,if_true:bool):
             result['vector']=vector
 
             #generate the report.txt
-            with open("report.txt","w+") as report:
+            with open("report.txt","a+") as report:
                 report.write(json.dumps(result))
             report.close()
 
