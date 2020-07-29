@@ -55,6 +55,7 @@ words_rm=['which','but','however','with','on','also','and','an','a','the','among
 
 #Read the result1.txt and then generate the vocabulary vector.
 #Here result1 is the result brought by first-time process(i.e result1.txt, the excrement of data_set_generator.py :-p)
+#if_true means the flag of vector i.e. whether it is ad.
 def report_gen(result1_path:str,if_true:bool):          
     try:
         flag:bool=True
