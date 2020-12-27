@@ -1,3 +1,0 @@
-Last week we published The Guide, which covers installation, customization, and updating a Bootstrap Theme. It also touches on the basics of integration with frameworks like Rails, React, Laravel, and more.
-Celebrate with 30-40% off!
-We hope The Guide can get you started with your first Bootstrap Theme, but we figured a hefty discount might help too! Use the codes below at checkout before Jun. 25th!
