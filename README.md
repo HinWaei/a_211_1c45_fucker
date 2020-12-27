@@ -1,5 +1,5 @@
 # jnu_icas_fucker
-A freely-customizable script realizing operating on services requiring ICAS (i.e. jwxk) .  
+A freely-customizable script realizing operating on services requiring ICAS (e.g. jwxk) .  
 
 # Introduction  
 
