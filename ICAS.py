@@ -116,7 +116,7 @@ def icas_login(
 if __name__ == "__main__":
 
     #Initial data
-    target="https://jwx_.___.edu.cn/amp-auth-adapter/login?service=https%3A%2F%2Fjwxk.jnu.edu.cn%3A443%2F" #URL like https://jwx_.___.edu.cn/amp-auth-adapter/login?service=https%3A%2F%2Fjwxk.jnu.edu.cn%3A443%2F
+    target="https://jwx_.___.edu.cn/amp-auth-adapter/login?service=https%3A%2F%2Fjwxk.jnu.edu.cn%3A443%2F" #URL like https://jwx_.___.edu.cn/amp-auth-adapter/login?service=https%3A%2F%2Fjwx_.___.edu.cn%3A443%2F
 
     #Get pre_login data like JSESSIONID,lt,execution
     #"headers" here is used to check whether it has other useful info
