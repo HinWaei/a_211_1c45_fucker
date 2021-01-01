@@ -17,6 +17,7 @@ Version: >=1.5.1
 Summary: Run JavaScript code from Python  
 ```bash
 $ pip3 install --user pyexecjs==1.5.1
-```
+```  
+  
 
-**这只是个半成品**
+
